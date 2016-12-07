@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import obrazek.ManazerObrazku;
 import obrazek.Obrazek;
 import obrazek.ZdrojObrazkuSoubor;
 
@@ -42,10 +43,17 @@ public class HraciPlocha extends JPanel{
 	private int posunPozadiX = 0;
 	
 	
-	public HraciPlocha(){
-		ZdrojObrazkuSoubor z = new ZdrojObrazkuSoubor();
-		z.naplnMapu();
+	public HraciPlocha(ManazerObrazku mo){
+		imgPozadi = mo.getObrazek(Obrazek.POZADI);
+		hrac = new Hrac(mo.getObrazek(Obrazek.HRAC));
+		Zed.setObrazek(mo.getObrazek(Obrazek.ZED));
 		
+		seznamZdi = new SeznamZdi();
+		
+		//nepotrebny kod po vytvoreni tridy ManazerObrazku
+		
+		/*ZdrojObrazkuSoubor z = new ZdrojObrazkuSoubor();
+		z.naplnMapu();
 		z.setZdroj(Obrazek.POZADI.getKlic());
 		
 		try {
@@ -75,7 +83,7 @@ public class HraciPlocha extends JPanel{
 			e.printStackTrace();
 		}
 		
-		seznamZdi = new SeznamZdi();
+		seznamZdi = new SeznamZdi();*/
 		
 	}
 	
